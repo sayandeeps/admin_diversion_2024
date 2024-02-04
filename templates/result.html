@@ -1,0 +1,295 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPFS Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"
+    ></script>
+    <script>
+      const { Client, Databases } = Appwrite;
+      var thumbnail = "{{thumbnamil}}";
+      var modelurl = "{{result}}";
+      console.log(thumbnail);
+      console.log(modelurl);
+      const client = new Client();
+
+      client
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject("65be4f2ad38b98334bd8");
+
+      const databases = new Databases(client);
+
+      function submitForm() {
+        const productName = document.getElementById("productName").value;
+        const productDetails = document.getElementById("productDetails").value;
+
+        const randomThreeDigitNumber = Math.floor(100 + Math.random() * 900);
+
+        const promise = databases.createDocument(
+          "65be4f8e873c41602c2c",
+          "65be4fce8807a0325601",
+          randomThreeDigitNumber.toString(),
+          {
+            modeladdress: modelurl,
+            thumbnail: thumbnail,
+            name: productName,
+            details: productDetails,
+            pid: parseInt(randomThreeDigitNumber),
+          }
+        );
+
+        promise
+          .then((response) => {
+            console.log(response);
+            // Handle success or perform additional actions
+          })
+          .catch((error) => {
+            console.error(error);
+            // Handle error
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <section class="shadow-sm font-poppins :bg-gray-900">
+      <div class="px-4 mx-auto max-w-7xl" x-data="{open:false}">
+        <nav class="flex items-center justify-between py-4">
+          <a href="" class="text-3xl font-semibold leading-none :text-gray-400"
+            >ARSI 3D</a
+          >
+          <div class="flex justify-between lg:space-x-9">
+            <div class="lg:hidden">
+              <button
+                class="flex items-center px-3 py-2 text-purple-600 border border-purple-200 rounded :text-gray-400 navbar-burger hover:text-purple-800 hover:border-purple-300 lg:hidden"
+                @click="open =true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  class="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >About us</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+            <div class="hidden lg:block">
+              <a
+                href=""
+                class="inline-block px-4 py-3 mr-2 text-xs font-medium leading-none text-gray-100 bg-purple-600 rounded-full :hover:bg-purple-500 :hover:text-gray-200 :text-gray-900 :bg-purple-400 hover:bg-purple-700"
+              >
+                Contact us
+              </a>
+            </div>
+          </div>
+        </nav>
+        <!-- Mobile Sidebar -->
+        <div
+          class="fixed inset-0 w-full bg-gray-900 opacity-25 :bg-gray-400 lg:hidden"
+          :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}"
+        ></div>
+        <div
+          class="absolute inset-0 z-50 h-screen p-3 text-gray-400 duration-500 transform bg-purple-50 :bg-gray-800 w-80 lg:hidden lg:transform-none lg:relative"
+          :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}"
+        >
+          <div class="flex justify-between lg:">
+            <a
+              class="p-2 text-2xl font-bold text-gray-700 :text-gray-400"
+              href="#"
+              >Logo</a
+            >
+            <button
+              class="p-2 text-gray-700 rounded-md :text-gray-400 hover:text-purple-300 lg:hidden"
+              @click="open=false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="bi bi-x-circle"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                />
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </button>
+          </div>
+          <ul class="px-4 text-left mt-7">
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-100"
+                >Home</a
+              >
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >About us</a
+              >
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >Features</a
+              >
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >Blog
+              </a>
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >Testimonials</a
+              >
+            </li>
+          </ul>
+          <div class="block mt-5 lg:hidden">
+            <a
+              href=""
+              class="inline-block w-full px-4 py-3 mr-2 text-xs font-semibold leading-none text-center text-gray-100 bg-purple-600 rounded-full :hover:bg-purple-400 :bg-purple-300 :text-gray-700 hover:bg-purple-700"
+            >
+              Contact us
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="relative overflow-hidden bg-white :bg-gray-800">
+        <div class="mx-auto max-w-7xl">
+          <div
+            class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:full lg:pb-28 xl:pb-32"
+          >
+            <div
+              class="px-4 mx-auto mt-2 max-w-7xl sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28"
+            >
+              <div class="flex items-center justify-center">
+                <!-- Author: FormBold Team -->
+
+                <div class="mx-auto w-full max-w-[550px] bg-white">
+                  <h1
+                    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl :text-white"
+                  >
+                    Model is Ready !!
+                  </h1>
+
+                  <form class="py-4 px-9">
+                    <div class="mb-5">
+                      <label
+                        for="productName"
+                        class="mb-3 mt-5 block text-base font-medium text-[#07074D]"
+                      >
+                        Name of The Product ?
+                      </label>
+                      <input
+                        type="text"
+                        id="productName"
+                        placeholder="Name of your Product"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                      />
+                      <label
+                        for="productDetails"
+                        class="mb-3 mt-20 block text-base font-medium text-[#07074D]"
+                      >
+                        A Bit About Your Product ?
+                      </label>
+                      <textarea
+                        id="productDetails"
+                        placeholder="About Your Product"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-4 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        rows="4"
+                      ></textarea>
+                    </div>
+
+                    <div>
+                      <button
+                        type="button"
+                        onclick="submitForm()"
+                        class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                      >
+                        Send File
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+          <model-viewer
+            src="{{ result }}"
+            ar
+            ar-scale="fixed"
+            camera-controls
+            touch-action="pan-y"
+            alt="A 3D model of an astronaut"
+            shadow-intensity="2"
+            max-camera-orbit="auto 90deg auto"
+            xr-environment
+            class="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full"
+          ></model-viewer>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

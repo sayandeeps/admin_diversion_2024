@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@thirdweb-dev/storage@1.0.0"></script>
+  </head>
+  <body>
+    <div id="loader"></div>
+
+    <!-- hero sec -->
+
+    <section class="shadow-sm font-poppins :bg-gray-900">
+      <div class="px-4 mx-auto max-w-7xl" x-data="{open:false}">
+        <nav class="flex items-center justify-between py-4">
+          <a href="" class="text-3xl font-semibold leading-none :text-gray-400"
+            >ARSI 3D</a
+          >
+          <div class="flex justify-between lg:space-x-9">
+            <div class="lg:hidden">
+              <button
+                class="flex items-center px-3 py-2 text-purple-600 border border-purple-200 rounded :text-gray-400 navbar-burger hover:text-purple-800 hover:border-purple-300 lg:hidden"
+                @click="open =true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  class="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >About us</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-sm text-gray-700 hover:text-purple-700 :text-gray-400 :hover:text-purple-500"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+            <div class="hidden lg:block">
+              <a
+                href=""
+                class="inline-block px-4 py-3 mr-2 text-xs font-medium leading-none text-gray-100 bg-purple-600 rounded-full :hover:bg-purple-500 :hover:text-gray-200 :text-gray-900 :bg-purple-400 hover:bg-purple-700"
+              >
+                Contact us
+              </a>
+            </div>
+          </div>
+        </nav>
+        <!-- Mobile Sidebar -->
+        <div
+          class="fixed inset-0 w-full bg-gray-900 opacity-25 :bg-gray-400 lg:hidden"
+          :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}"
+        ></div>
+        <div
+          class="absolute inset-0 z-50 h-screen p-3 text-gray-400 duration-500 transform bg-purple-50 :bg-gray-800 w-80 lg:hidden lg:transform-none lg:relative"
+          :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}"
+        >
+          <div class="flex justify-between lg:">
+            <a
+              class="p-2 text-2xl font-bold text-gray-700 :text-gray-400"
+              href="#"
+              >Logo</a
+            >
+            <button
+              class="p-2 text-gray-700 rounded-md :text-gray-400 hover:text-purple-300 lg:hidden"
+              @click="open=false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="bi bi-x-circle"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                />
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </button>
+          </div>
+          <ul class="px-4 text-left mt-7">
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-100"
+                >Home</a
+              >
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >About us</a
+              >
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >Features</a
+              >
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >Blog
+              </a>
+            </li>
+            <li class="pb-3">
+              <a
+                href=""
+                class="text-sm text-gray-700 hover:text-purple-400 :text-gray-400"
+                >Testimonials</a
+              >
+            </li>
+          </ul>
+          <div class="block mt-5 lg:hidden">
+            <a
+              href=""
+              class="inline-block w-full px-4 py-3 mr-2 text-xs font-semibold leading-none text-center text-gray-100 bg-purple-600 rounded-full :hover:bg-purple-400 :bg-purple-300 :text-gray-700 hover:bg-purple-700"
+            >
+              Contact us
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="relative overflow-hidden bg-white :bg-gray-800">
+        <div class="mx-auto max-w-7xl">
+          <div
+            class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:full lg:pb-28 xl:pb-32"
+          >
+            <div
+              class="px-4 mx-auto mt-2 max-w-7xl sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28"
+            >
+              <div class="flex items-center justify-center">
+                <!-- Author: FormBold Team -->
+
+                <div class="mx-auto w-full max-w-[550px] bg-white">
+                  <h1
+                    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl :text-white"
+                  >
+                    We invest in the world’s potential
+                  </h1>
+
+                  <form
+                    class="py-4 px-9"
+                    id="uploadForm"
+                    action="/submit"
+                    method="post"
+                    enctype="multipart/form-data"
+                  >
+                    <div class="mb-5">
+                      <label
+                        for="email"
+                        class="mb-3 block text-base font-medium text-[#07074D]"
+                      >
+                        What will be the name of your 3D model
+                      </label>
+                      <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        placeholder="Name of your model"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                      />
+                    </div>
+
+                    <div class="mb-6 pt-2">
+                      <label
+                        class="mb-5 block text-xl font-semibold text-[#07074D]"
+                      >
+                        Upload File
+                      </label>
+
+                      <div class="mb-8">
+                        <input
+                          type="file"
+                          name="file"
+                          id="file"
+                          class="sr-only"
+                          webkitdirectory
+                          directory
+                          multiple
+                        />
+                        <label
+                          for="file"
+                          class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
+                        >
+                          <div>
+                            <span
+                              class="mb-2 block text-xl font-semibold text-[#07074D]"
+                            >
+                              Drop files here
+                            </span>
+                            <span
+                              class="mb-2 block text-base font-medium text-[#6B7280]"
+                            >
+                              Or
+                            </span>
+                            <span
+                              class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
+                            >
+                              Browse
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div>
+                      <button
+                        class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                      >
+                        Send File
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+          <img
+            src="https://i.postimg.cc/8PBWyRJN/All-Isometric-DEC16-15.jpg"
+            alt=""
+            class="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full"
+          />
+        </div>
+      </div>
+    </section>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <section class="bg-white dark:bg-gray-900">
+      <div
+        class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
+      >
+        <div class="mr-auto place-self-center lg:col-span-7">
+          <h1
+            class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
+          >
+            Convert Your USDZ Model to GLB for ar support among multiple devices
+          </h1>
+          <p
+            class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
+          >
+            Please go to the below the page to convert your usdz models to glb
+            files
+          </p>
+          <a
+            href="https://products.aspose.com/3d/python-net/conversion/usdz-to-glb/"
+            target="_blank"
+            class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+          >
+            Get started
+            <svg
+              class="w-5 h-5 ml-2 -mr-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://products.aspose.com/3d/python-net/conversion/usdz-to-glb/"
+            target="_blank"
+            class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+          >
+            Convert
+          </a>
+        </div>
+        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+          <img
+            src="https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1701792908/catalog/1732070194122297344/xkz6ohbhtidweuxavvqn.jpg"
+            alt="mockup"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- features -->
+    <div>
+      <form
+        class="py-4 px-9"
+        id="uploadForm"
+        action="/ipfs"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-5">
+          <label
+            for="furl"
+            class="mb-3 block text-base font-medium text-[#07074D]"
+          >
+            What will be the name of the model you want to store
+          </label>
+          <input
+            type="text"
+            name="furl"
+            id="furl"
+            placeholder="Name of the file"
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          />
+        </div>
+
+        <div>
+          <button
+            class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+          >
+            Send File
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const fileInput = document.getElementById("file");
+
+      fileInput.addEventListener("change", (event) => {
+        const folders = event.target.files;
+
+        if (folders.length > 0) {
+          const folderPath = folders[0].webkitRelativePath; // Use webkitRelativePath to get the relative path
+          const folderName = folderPath.split("/")[0]; // Extract the folder name
+
+          console.log("Folder Name:", folderName);
+
+          // Send the folder name to the server using AJAX
+          $.ajax({
+            type: "POST",
+            url: "/submit",
+            data: {
+              email,
+              folderName,
+            },
+            success: function (response) {
+              console.log(response);
+            },
+            error: function (error) {
+              console.error(error);
+            },
+          });
+        }
+      });
+    </script>
+
+    <!--footer-->
+    <footer class="text-gray-600 body-font">
+      <div
+        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+      >
+        <a
+          class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <span class="ml-3 text-xl">Tailblocks</span>
+        </a>
+        <p
+          class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+        >
+          © 2020 Tailblocks —
+          <a
+            href="https://twitter.com/knyttneve"
+            class="text-gray-600 ml-1"
+            rel="noopener noreferrer"
+            target="_blank"
+            >@knyttneve</a
+          >
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+        >
+          <a class="text-gray-500">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="0"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+              ></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@thirdweb-dev/storage@1.0.0"></script>
+  </body>
+</html>
